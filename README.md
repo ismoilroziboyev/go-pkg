@@ -33,7 +33,11 @@ Special thanks to the authors and maintainers of github.com/lucasb-eyer/go-color
    - Description: The package includes common errors with useful formatting methods to enhance error handling in your Go applications.
 
 4. **Hash:**
-   - Method: `hash.Hash(s string) string`
+   - Methods: 
+   	`hash.HashMD5(s string) string` - hashing method uses crypto/md5
+	`hash.HashSHA1(s string) string` - hashing method uses crypto/sha1
+	`hash.HashSHA256(s string) string` - hashing method uses crypto/sha256
+	`hash.HashSHA512(s string) string` - hashing method uses crypto/sha512
    - Description: This package provides a hashing function for a given string, offering a convenient way to hash sensitive information securely.
 
 6. **Mapper:**
@@ -151,7 +155,7 @@ import (
 func main() {
 	hashingString := "this is the string"
 
-	hashedString := hash.Hash(hashingString)
+	hashedString := hash.HashMD5(hashingString)
 
 	fmt.Println(hashedString) //prints 'fa77937febc2a2a9754d326bb88e0b16'
 }

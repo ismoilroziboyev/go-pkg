@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestHash(t *testing.T) {
+func TestHashMD5(t *testing.T) {
 	testCases := []struct {
 		Str  string
 		Hash string
@@ -28,7 +28,7 @@ func TestHash(t *testing.T) {
 
 	for index, testCase := range testCases {
 		t.Run(fmt.Sprintf("%d - subtest", index), func(t *testing.T) {
-			hashedStr := Hash(testCase.Str)
+			hashedStr := HashMD5(testCase.Str)
 			require.Equal(t, testCase.Hash, hashedStr)
 		})
 	}
