@@ -34,18 +34,18 @@ Special thanks to the authors and maintainers of github.com/lucasb-eyer/go-color
 
 4. **Hash:**
    - Methods: 
-   	`hash.HashMD5(s string) string`
+   
+   		`hash.HashMD5(s string) string` - 
 This method provides a convenient way to generate an MD5 hash for a given input string. It utilizes the cryptographic hash function MD5, which produces a 128-bit hash value often represented as a 32-character hexadecimal number. While MD5 is widely used for non-security-critical purposes like checksums and data integrity verification, it is considered weak for cryptographic security due to vulnerabilities. It is recommended to use stronger hash functions for security-sensitive applications.
 
 
-	`hash.HashSHA1(s string) string`
+		`hash.HashSHA1(s string) string` - 
 This method implements the SHA-1 hashing algorithm to create a hash value for the provided input string. SHA-1 produces a 160-bit hash, typically represented as a 40-character hexadecimal string. However, SHA-1 is no longer considered secure against well-funded attackers, and its use is deprecated in cryptographic applications. For better security, consider using SHA-256 or SHA-3.
-   - Description: This package provides a hashing function for a given string, offering a convenient way to hash sensitive information securely.
 
-	`hash.HashSHA256(s string) string`
+		`hash.HashSHA256(s string) string` - 
 This function uses the SHA-256 hash function to generate a hash for the input string. SHA-256 is part of the SHA-2 family and produces a 256-bit hash, commonly represented as a 64-character hexadecimal string. It is widely used and considered secure for various cryptographic purposes, including digital signatures and data integrity verification.
 
-	`hash.HashSHA512(s string) string`
+		`hash.HashSHA512(s string) string` - 
 The `HashSHA512` method employs the SHA-512 hashing algorithm to create a hash value for the provided string. SHA-512 produces a 512-bit hash, represented as a 128-character hexadecimal string. It offers a higher level of security due to its longer hash length. SHA-512 is suitable for applications requiring a robust hash function, such as cryptographic protocols and password hashing.
 
 1. **Mapper:**
