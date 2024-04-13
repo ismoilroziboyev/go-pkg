@@ -45,9 +45,10 @@ type multilang struct {
 }
 
 type Error struct {
-	i18nmsg multilang
-	msg     string
-	code    int
+	i18nmsg      multilang
+	msg          string
+	code         int
+	internalCode string
 }
 
 func (e Error) Error() string {
@@ -56,6 +57,10 @@ func (e Error) Error() string {
 
 func (e Error) Code() int {
 	return e.code
+}
+
+func (e Error) InternalCode() string {
+	return e.internalCode
 }
 
 func (e Error) ErrorI18nMsg(lang string) string {
@@ -77,6 +82,48 @@ func new(msg string, code int, i18n multilang) error {
 		code:    code,
 		i18nmsg: i18n,
 	}
+}
+
+func WithInternalCode(msg, internalCode string, code int) error {
+	switch code {
+	case http.StatusBadRequest:
+		return Error{
+			i18nmsg:      badRequesti18n,
+			msg:          msg,
+			code:         code,
+			internalCode: internalCode,
+		}
+	case http.StatusInternalServerError:
+		return Error{
+			i18nmsg:      internali18n,
+			msg:          msg,
+			code:         code,
+			internalCode: internalCode,
+		}
+	case http.StatusForbidden:
+		return Error{
+			i18nmsg:      forbiddeni18n,
+			msg:          msg,
+			code:         code,
+			internalCode: internalCode,
+		}
+	case http.StatusUnauthorized:
+		return Error{
+			i18nmsg:      unauthorizedi18n,
+			msg:          msg,
+			code:         code,
+			internalCode: internalCode,
+		}
+	case http.StatusNotFound:
+		return Error{
+			i18nmsg:      notFoundi18n,
+			msg:          msg,
+			code:         code,
+			internalCode: internalCode,
+		}
+	}
+
+	return nil
 }
 
 func Wrap(msg string, err error) error {
